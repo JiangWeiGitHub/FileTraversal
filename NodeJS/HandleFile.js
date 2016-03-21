@@ -148,19 +148,26 @@ function AddReadlistXattr(path, value)
                         }
                         else
                         {
-                            var tmp = get_value.toString();
-
-                            var tmp_value = tmp.substr(0, get_value.length - 1);
-
-                            xattr.set(path, 'user.readlist', tmp_value + ',' + value + ']', function(err)
+                            if (get_value.indexOf(value) <= 0)
                             {
-                                if (err)
+                                var tmp = get_value.toString();
+
+                                var tmp_value = tmp.substr(0, get_value.length - 1);
+
+                                xattr.set(path, 'user.readlist', tmp_value + ',' + value + ']', function(err)
                                 {
-                                    console.log('Set Xattr [user.readlist] Value Failed!');
+                                    if (err)
+                                    {
+                                        console.log('Set Xattr [user.readlist] Value Failed!');
                     
-                                    //return console.error(err);
-                                }
-                            });
+                                        //return console.error(err);
+                                    }
+                                });
+                            }
+                            else
+                            {
+
+                            }
                         }
                     }
                 });
