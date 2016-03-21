@@ -1,3 +1,2 @@
 ### Precondition:
-***
-**npm install fs-xattr node-uuid**
+`npm install fs-xattr node-uuid`<p>
