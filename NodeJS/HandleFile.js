@@ -128,7 +128,7 @@ function AddReadlistXattr(path, value)
                 {
                     if (err)
                     {
-                        console.log('Get Xattr [user.readlist] Value Failed!');
+                        console.log('Get Xattr Value Failed!');
                     
                         return console.error(err);
                     }
@@ -148,9 +148,11 @@ function AddReadlistXattr(path, value)
                         }
                         else
                         {
-                            var tmp_value = get_value.substr(0, get_value.length - 2);
+                            var tmp = get_value.toString();
 
-                            xattr.set(path, 'user.readlist', tmp_value + value + ']', function(err)
+                            var tmp_value = tmp.substr(0, get_value.length - 1);
+
+                            xattr.set(path, 'user.readlist', tmp_value + ',' + value + ']', function(err)
                             {
                                 if (err)
                                 {
