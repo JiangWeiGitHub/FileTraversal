@@ -129,8 +129,18 @@ function AddReadlistXattr(path, value)
                     if (err)
                     {
                         console.log('Get Xattr Value Failed!');
+
+                        xattr.set(path, 'user.readlist', '[' + value + ']', function(err)
+                        {
+                            if (err)
+                            {
+                                console.log('Set Xattr [user.readlist] Value Failed!');
                     
-                        return console.error(err);
+                                //return console.error(err);
+                            }
+                        });
+                    
+                        //return console.error(err);
                     }
                     else
                     {
@@ -166,7 +176,7 @@ function AddReadlistXattr(path, value)
                             }
                             else
                             {
-
+                                console.log('Xattr [user.readlist] Value Already exists!');
                             }
                         }
                     }
