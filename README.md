@@ -2,4 +2,4 @@
 
 ***
 
-**Add xattr to every files which include normal files and folders.**<p>
+`**Add hash & uuid xattrs to specified file which includes normal file and folder.**`<p>
