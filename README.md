@@ -1,3 +1,5 @@
-# FileTraversal
-### Precondition:
-`apt-get install attr uuid`<p>
+### FileTraversal
+
+***
+
+**Add xattr to every files which include normal files and folders.**<p>
