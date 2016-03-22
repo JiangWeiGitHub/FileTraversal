@@ -105,43 +105,43 @@ cleanTypeXattr()
 
 ##############################################################
 
-# Add xattr with ownerlist for this file
+# Add xattr with owner for this file
 # Deal with single file
-# Parameters: $1 fileName; $2 ownerlistValue
-addOwnerListXattr()
+# Parameters: $1 fileName; $2 ownerValue
+addOwnerXattr()
 {
-    originalStr=`getfattr -n user.ownerlist "$1" --only-values`
+    originalStr=`getfattr -n user.owner "$1" --only-values`
     if [ $? != 0 ]
     then
         # First setting
-        setfattr -n user.ownerlist -v "$2" "$1"
+        setfattr -n user.owner -v "$2" "$1"
     else
-        setfattr -n user.ownerlist -v "$originalStr; $2" "$1"
+        setfattr -n user.owner -v "$originalStr; $2" "$1"
     fi
 }
 
-# Clean xattr with ownerlist for this file
+# Clean xattr with owner for this file
 # Deal with single file
 # Parameters: $1 fileName
-cleanOwnerListXattr()
+cleanOwnerXattr()
 {
-    setfattr -x user.ownerlist "$1"
+    setfattr -x user.owner "$1"
 }
 
-# Get xattr with ownerlist for this file
+# Get xattr with owner for this file
 # Deal with single file
 # Parameters: $1 fileName
-getOwnerListXattr()
+getOwnerXattr()
 {
-    getfattr -n user.ownerlist "$1"
+    getfattr -n user.owner "$1"
 }
 
-# Delete xattr with ownerlist for this file
+# Delete xattr with owner for this file
 # Deal with single file
-# Parameters: $1 fileName; $2 ownerlistValue
-deleteOwnerListXattr()
+# Parameters: $1 fileName; $2 ownerValue
+deleteOwnerXattr()
 {
-    originalStr=`getfattr -n user.ownerlist "$1" --only-values`
+    originalStr=`getfattr -n user.owner "$1" --only-values`
     if [ $? != 0 ]
     then
         # Empty
@@ -175,8 +175,8 @@ deleteOwnerListXattr()
         then
             return 102
         else
-            setfattr -x user.ownerlist "${1}"
-            setfattr -n user.ownerlist -v "${tmpStr}" "${1}"
+            setfattr -x user.owner "${1}"
+            setfattr -n user.owner -v "${tmpStr}" "${1}"
         fi
     fi
 }
