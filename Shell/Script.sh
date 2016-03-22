@@ -23,7 +23,7 @@ setAllUUIDHashTypeXattr()
             setfattr -n user.type -v "folder" "${filename}"
 
             cd ${filename}
-            setAllUUIDHashXattr
+            setAllUUIDHashTypeXattr
             cd ..
         else
             echo "Unsupported File Format!"
@@ -186,7 +186,7 @@ deleteOwnerListXattr()
 # Add xattr with readlist for this file
 # Deal with single file
 # Parameters: $1 fileName; $2 readlistValue
-addReadlistXattr()
+addReadListXattr()
 {
     originalStr=`getfattr -n user.readlist "$1" --only-values`
     if [ $? != 0 ]
@@ -201,7 +201,7 @@ addReadlistXattr()
 # Clean xattr with readlist for this file
 # Deal with single file
 # Parameters: $1 fileName
-cleanReadlistXattr()
+cleanReadListXattr()
 {
     setfattr -x user.readlist "$1"
 }
@@ -209,7 +209,7 @@ cleanReadlistXattr()
 # Get xattr with readlist for this file
 # Deal with single file
 # Parameters: $1 fileName
-getReadlistXattr()
+getReadListXattr()
 {
     getfattr -n user.readlist "$1"
 }
@@ -217,7 +217,7 @@ getReadlistXattr()
 # Delete xattr with readlist for this file
 # Deal with single file
 # Parameters: $1 fileName; $2 readlistValue
-deleteReadlistXattr()
+deleteReadListXattr()
 {
     originalStr=`getfattr -n user.readlist "$1" --only-values`
     if [ $? != 0 ]
@@ -264,7 +264,7 @@ deleteReadlistXattr()
 # Add xattr with writelist for this file
 # Deal with single file
 # Parameters: $1 fileName; $2 writelistValue
-addWritelistXattr()
+addWriteListXattr()
 {
     originalStr=`getfattr -n user.writelist "$1" --only-values`
     if [ $? != 0 ]
@@ -279,7 +279,7 @@ addWritelistXattr()
 # Clean xattr with writelist for this file
 # Deal with single file
 # Parameters: $1 fileName
-cleanWritelistXattr()
+cleanWriteListXattr()
 {
     setfattr -x user.writelist "$1"
 }
@@ -287,7 +287,7 @@ cleanWritelistXattr()
 # Get xattr with writelist for this file
 # Deal with single file
 # Parameters: $1 fileName
-getWritelistXattr()
+getWriteListXattr()
 {
     getfattr -n user.writelist "$1"
 }
@@ -295,7 +295,7 @@ getWritelistXattr()
 # Delete xattr with writelist for this file
 # Deal with single file
 # Parameters: $1 fileName; $2 writelistValue
-deleteWritelistXattr()
+deleteWriteListXattr()
 {
     originalStr=`getfattr -n user.writelist "$1" --only-values`
     if [ $? != 0 ]
